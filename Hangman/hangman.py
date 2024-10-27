@@ -1,6 +1,10 @@
-def hangman_ver1():
+import random
+
+
+def hangman_ver2():
     print("HANGMAN")
-    word = "python"
+    words = ['python', 'java', 'javascript', 'php']
+    word = random.choice(words)
     guess = input("Guess the word: > ").strip().lower()
     if guess == word:
         print("You survived!")
@@ -8,4 +12,4 @@ def hangman_ver1():
         print("You lost!")
 
 
-hangman_ver1()
+hangman_ver2()
