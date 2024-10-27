@@ -1,5 +1,11 @@
-def preview():
+def hangman_ver1():
     print("HANGMAN")
-    print("The game will be available soon.")
+    word = "python"
+    guess = input("Guess the word: > ").strip().lower()
+    if guess == word:
+        print("You survived!")
+    else:
+        print("You lost!")
 
-preview()
+
+hangman_ver1()
