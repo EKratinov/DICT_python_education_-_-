@@ -1,29 +1,35 @@
 import random
 
 
-def hangman_ver4():
+def hangman_ver5():
     print("HANGMAN")
     words = ['python', 'java', 'javascript', 'php']
     word = random.choice(words)
     guessed = ['-' for _ in word]
-    attempts = 8
+    attempts_left = 8
+    guessed_letters = set()
 
-    while attempts > 0 and '-' in guessed:
+    while attempts_left > 0 and '-' in guessed:
         print(''.join(guessed))
         letter = input("Input a letter: > ").strip().lower()
 
-        if letter in word:
+        if letter in guessed_letters:
+            print("No improvements")
+            attempts_left -= 1
+        elif letter in word:
+            guessed_letters.add(letter)
             for i, l in enumerate(word):
                 if l == letter:
                     guessed[i] = letter
         else:
-            attempts -= 1
+            guessed_letters.add(letter)
+            attempts_left -= 1
             print("That letter doesn't appear in the word")
 
-        if '-' not in guessed:
-            print("You survived!")
-            return
-    print("You lost!")
+    if '-' not in guessed:
+        print("You survived!")
+    else:
+        print("You lost!")
 
 
-hangman_ver4()
+hangman_ver5()
