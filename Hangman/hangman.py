@@ -1,7 +1,7 @@
 import random
 
 
-def hangman_ver5():
+def hangman_ver6():
         print("HANGMAN")
         words = ['python', 'java', 'javascript', 'php']
         word = random.choice(words)
@@ -35,4 +35,16 @@ def hangman_ver5():
             print("You lost!")
 
 
-hangman_ver5()
+def menu():
+    while True:
+        print("HANGMAN")
+        choice = input('Type "play" to play the game, "exit" to quit: > ').strip().lower()
+        if choice == "play":
+            hangman_ver6()
+        elif choice == "exit":
+            break
+        else:
+            print('Invalid choice. Please type "play" or "exit".')
+
+
+menu()
