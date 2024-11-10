@@ -22,7 +22,9 @@ def split_bill(friends, num_of_friends):
         for friend in friends:
             friends[friend] = split_amount
         print("Updated friends list with split amounts:", friends)
-    return friends
+    return friends, total_amount
+    return friends, 0
+
 
 def choose_lucky(friends):
     lucky_choice = input('Do you want to use the "Who is lucky?" feature? Write Yes/No: ')
@@ -35,6 +37,16 @@ def choose_lucky(friends):
         return None
 
 
+def recalculate(friends, lucky_friend, total_amount):
+    if lucky_friend:
+        new_split_amount = round(total_amount / (len(friends) - 1), 2)
+        for friend in friends:
+            friends[friend] = new_split_amount if friend != lucky_friend else 0
+    print("Final friends list with recalculated amounts:", friends)
+    return friends
+
+
 friends, num_of_friends = add_friends()
-friends = split_bill(friends, num_of_friends)
+friends, total_amount = split_bill(friends, num_of_friends)
 lucky_friend = choose_lucky(friends)
+friends = recalculate(friends, lucky_friend, total_amount)
