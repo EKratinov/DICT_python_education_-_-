@@ -1,10 +1,10 @@
-def print_fixed_board():
-    board = [
-        ["X", "O", "X"],
-        ["O", "X", "O"],
-        ["X", "X", "O"]
-    ]
-    for row in board:
-        print(" ".join(row))
 
-print_fixed_board()
+def print_board(state):
+    print("---------")
+    for i in range(0, 9, 3):
+        row = state[i:i+3]
+        print(f"| {' '.join(row)} |")
+    print("---------")
+
+state = input("Enter cells: ")
+print_board(state)
