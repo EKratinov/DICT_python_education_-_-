@@ -40,13 +40,17 @@ def player_turn(pencils, current_player):
     return pencils
 
 
+def declare_winner(pencils, current_player):
+    if pencils == 0:
+        print(f"{current_player} won!")
+
+
 if __name__ == "__main__":
     pencils, current_player = initialize_game()
 
     while pencils > 0:
         pencils = player_turn(pencils, current_player)
-        current_player = "Name1" if current_player == "Name2" else "Name2"
-
         if pencils == 0:
-            print(f"{current_player} won!")
+            declare_winner(pencils, current_player)
             break
+        current_player = "Name1" if current_player == "Name2" else "Name2"
